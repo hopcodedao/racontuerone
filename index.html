@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racontuer</title>
+<link rel="shortcut icon" type="image/png" href="/logo.png"/>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f9f9f9; /* Màu nền nhẹ nhàng */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: url('back.jpg') no-repeat center center fixed;
+        background-size: cover; /* Đảm bảo hình ảnh nền che phủ toàn bộ màn hình */
+    }
+
+    h1 {
+        margin-bottom: 10px;
+        color: #333;
+    }
+    h3 {
+        margin-bottom: 40px;
+        color: #333;
+    }
+    form {
+        text-align: center;
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    button {
+        padding: 25px 50px;
+        font-size: 24px;
+        margin: 30px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease; /* Hiệu ứng hover mượt mà */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    button:hover {
+        transform: translateY(-5px); /* Hiệu ứng nâng nút khi hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    #doc-truyen {
+        background-color: #F0E68C;
+        color: black;
+    }
+
+    #doc-truyen:hover {
+        background-color: #E5D46B; /* Màu đậm hơn khi hover */
+    }
+
+    #tham-quan {
+        background-color: #DEB887;
+        color: black;
+    }
+
+    #tham-quan:hover {
+        background-color: #D2A679; /* Màu đậm hơn khi hover */
+    }
+
+
+    /* CSS cho hộp thoại */
+    .modal {
+        display: none; /* Ban đầu ẩn hộp thoại */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Nền mờ */
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-content h2 {
+        margin-bottom: 20px;
+    }
+
+    .modal-content button {
+        background-color: #4682B4;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .modal-content button:hover {
+        background-color: #4169E1;
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+    }
+
+    .close:hover {
+        color: #000;
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+</style>
+</head>
+<body>
+
+    <form method="post">
+        <h1>CHỌN HOẠT ĐỘNG BẠN MUỐN</h1>
+        <h3><i>CHOOSE THE ACTIVITY YOU WANT</i></h3>
+        <button type="button" name="doc_truyen" id="doc-truyen" onclick="openModal('storyModal')">Đọc câu chuyện<br><i>(Read the story)</i></button>
+        <button type="button" name="tham_quan" id="tham-quan" onclick="openModal('tourModal')">Tham quan tour du lịch<br><i>(Go on a tour)</i></button>
+    </form>
+
+    <!-- Hộp thoại (Modal) -->
+    <div id="storyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('storyModal')">&times;</span>
+            <h2>Chọn một câu chuyện để đọc</h2>
+            <button><a href="https://online.fliphtml5.com/srkca/qbwe/" target="_blank">1. Cầu Cần Thơ</a></button>
+            <button><a href="https://online.fliphtml5.com/srkca/grjp/#p=4" target="_blank">2. Bến Ninh Kiều</a></button>
+            <button><a href="https://online.fliphtml5.com/srkca/ioyv/#p=4" target="_blank">3. Chợ nổi Cái Răng</a></button>
+        </div>
+    </div>
+
+    <div id="tourModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('tourModal')">&times;</span>
+            <h2>Chọn một tour du lịch</h2>
+            <button><a href="https://360view.vn/data3/projects/vietnam/2023/can-tho-cau-di-bo/" target="_blank">1. Tour Cần Thơ - Cầu đi bộ</a></button>
+            <button><a href="https://360view.vn/data3/projects/vietnam/2023/can-tho-ben-ninh-kieu/" target="_blank">2. Tour Cần Thơ - Bến Ninh Kiều</a></button>
+            <button><a href="https://360view.vn/data3/projects/vietnam/2023/can-tho-cho-noi-cai-rang/" target="_blank">3. Tour Cần Thơ - Chợ nổi Cái Răng</a></button>
+        </div>
+    </div>
+
+    <script>
+        // Hàm mở hộp thoại
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+        }
+
+        // Hàm đóng hộp thoại
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Đóng modal khi nhấn ngoài vùng modal
+        window.onclick = function(event) {
+            let storyModal = document.getElementById('storyModal');
+            let tourModal = document.getElementById('tourModal');
+            if (event.target == storyModal) {
+                closeModal('storyModal');
+            } else if (event.target == tourModal) {
+                closeModal('tourModal');
+            }
+        }
+    </script>
+</body>
+</html>
